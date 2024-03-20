@@ -13,3 +13,11 @@
   background-color: rgba(0, 0, 0, 0.55);
 }
 
+.modal-close {
+  color: #1d1a16;
+  font-weight: bold;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
