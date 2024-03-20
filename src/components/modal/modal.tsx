@@ -20,7 +20,6 @@ function Modal({ open, children }: Props) {
   return createPortal(
     <dialog className="modal" ref={dialog}>
       {open ? children : null}
-      <div id="modal-actions"></div>
     </dialog>,
     document.getElementById("modal")!
   );
