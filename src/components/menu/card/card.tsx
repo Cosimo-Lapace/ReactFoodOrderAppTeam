@@ -1,7 +1,7 @@
 import React from "react";
 import { Meals } from "../../../model/Meals.ts";
 import { url } from "../../../http/https.ts";
-import Button from "../../button/button.tsx";
+import Button from "../../../utilities/button/button.tsx";
 import classes from "./card.module.css";
 
 //the card component will have all the meals properties
