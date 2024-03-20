@@ -1,28 +1,20 @@
 import React, { useEffect } from "react";
-
+import { getMenu } from "../../http/https.ts";
+import { url } from "../../http/https.ts";
 import  Card from "../../components/menu/card/card.tsx";
 import { Meals } from "../../model/Meals.ts";
 
 const Menu: React.FC = ()=>{
     const [meals, setMeals] = React.useState<Meals[]>([]);
 
-    const url = 'http://localhost:3000/';
+    
    
     useEffect(() => {
-     async function getMenu(uri: string) {
-        try {
-            const response = await fetch(url + uri);
-            if (!response.ok) {
-                throw new Error('Failed to fetch data');
-            }
-            const data = await response.json();
-            setMeals(data);
-            return data;
-        } catch (error) {
-            throw new Error('Failed to fetch data');
-        }
+     async function getMeals(uri: string) {
+        const response = await getMenu(uri);
+        setMeals(response);
     }
-    getMenu("meals");
+    getMeals("meals");
     }, []);
 
     return(<>

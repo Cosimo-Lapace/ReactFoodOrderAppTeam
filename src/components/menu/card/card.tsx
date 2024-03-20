@@ -3,6 +3,7 @@ import { Meals } from "../../../model/Meals.ts";
 import { url } from "../../../http/https.ts";
 import Button from "../../button/button.tsx";
 
+//the card component will have all the meals properties
 const Card: React.FC<Meals> = ({ image, name, price, description }) => {
   return <div className="meal-item">
     <article>
