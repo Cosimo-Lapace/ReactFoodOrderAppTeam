@@ -1,8 +1,9 @@
+import React from 'react';
 import './App.css'
 import Headers from './components/headers/headers';
 import MealsMain from './components/mealsMain/mealsMain';
 
-function App() {
+const App: React.FC =() => {
 
   return (
     <>
@@ -14,4 +15,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
