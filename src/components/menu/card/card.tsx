@@ -2,15 +2,18 @@ import React from "react";
 import { Meals } from "../../../model/Meals.ts";
 import { url } from "../../../http/https.ts";
 import Button from "../../button/button.tsx";
+import classes from "./card.module.css";
 
 //the card component will have all the meals properties
 const Card: React.FC<Meals> = ({ image, name, price, description }) => {
-  return <div className="meal-item">
+  return <div className={classes["meal-item"]}>
     <article>
         <img src={`${url}${image}`} alt={name}/>
         <h3>{name}</h3>
-        <div className="meal-item-price">€ {price}</div>
-        <p className="meal-item-description">{description}</p>
+        <div>
+            <p className={classes["meal-item-price"]}>€ {price}</p>
+            </div>
+        <p className={classes["meal-item-description"]}>{description}</p>
         <div>
             <Button children="Add to cart" />
 
