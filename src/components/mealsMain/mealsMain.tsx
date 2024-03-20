@@ -4,7 +4,6 @@ export default function MealsMain() {
     return (
         <main>
             <Meals />
-
         </main>
     );
 }
