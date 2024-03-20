@@ -1,3 +1,10 @@
+import Meals from "../menu/menu";
+
 export default function MealsMain() {
-    return;
+    return (
+        <main>
+            <Meals />
+
+        </main>
+    );
 }
