@@ -1,11 +1,18 @@
 import "./headers.css";
 import logo from "/logo.jpg";
 import Modal from "../modal/modal";
-import { useState } from "react";
 import Cart from "../cart/cart";
+import { useRef } from "react";
+
+export interface ModalRef {
+  open: () => void;
+}
 
 export default function Headers() {
-  const [openModal, setOpenModal] = useState<boolean>(false);
+  const dialog = useRef<ModalRef>(null);
+  function openModal() {
+    dialog.current?.open();
+   }
   return (
     <header id="main-header">
       <div id="title">
@@ -14,11 +21,11 @@ export default function Headers() {
       </div>
       <div>
         <button type="button">Orders History</button>
-        <button type="button" onClick={() => setOpenModal(true)}>
+        <button type="button" onClick={openModal}>
           Cart(0)
         </button>
       </div>
-      <Modal open={openModal}>
+      <Modal ref={dialog}>
         <Cart />
       </Modal>
     </header>

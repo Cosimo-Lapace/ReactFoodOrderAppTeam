@@ -1,28 +1,35 @@
 import "./modal.css";
-import { useRef, useEffect } from "react";
+import { useRef, forwardRef, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
+import { ModalRef } from "../headers/headers";
 
-interface Props extends React.PropsWithChildren {
-  open: boolean;
-}
 
-function Modal({ open, children }: Props) {
+
+const Modal = forwardRef<ModalRef, React.PropsWithChildren>(function Modal(
+  { children },
+  ref
+) {
   const dialog = useRef<HTMLDialogElement>(null);
 
-  useEffect(() => {
-    if (open) {
-      dialog.current?.showModal();
-    } else {
-      dialog.current?.close();
+  function close() {
+    dialog.current?.close();
+   }
+
+  useImperativeHandle(ref, () => ({
+    open: () => {
+      if (dialog.current) {
+        dialog.current.showModal();
+      }
     }
-  }, [open]);
+  }));
 
   return createPortal(
     <dialog className="modal" ref={dialog}>
-      {open ? children : null}
+      <button className="modal-close" type="button" onClick={close}>X</button>
+      {children}
     </dialog>,
     document.getElementById("modal")!
   );
-}
+});
 
 export default Modal;
