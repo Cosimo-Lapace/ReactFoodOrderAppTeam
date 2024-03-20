@@ -2,7 +2,7 @@ import "./headers.css";
 import logo from "/logo.jpg";
 import Modal from "../modal/modal";
 import { useState } from "react";
-import ModalAction from "../modal/modal-actions/modal-action";
+import ModalActions from "../modal/modal-actions/modal-actions";
 
 export default function Headers() {
   const [openModal, setOpenModal] = useState<boolean>(false);
@@ -20,9 +20,11 @@ export default function Headers() {
       </div>
       <Modal open={openModal}>
         AAA
-        <ModalAction
-          onConfirm={() => setOpenModal(false)}
-          onConfirmLabel="Close"
+        <ModalActions
+          onCloseLabel={"Close"}
+          onClose={() => setOpenModal(false)}
+          onConfirmLabel={null}
+          onConfirm={() => null}
         />
       </Modal>
     </header>
