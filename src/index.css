@@ -38,6 +38,11 @@ body {
 #main-header button {
   font-size: 1.5rem;
   font-family: "Lato", sans-serif;
+  font-weight: 400;
+  color: #ffc404;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 h1 {
@@ -69,7 +74,7 @@ h1 {
   box-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
 }
 
-.meal-item article {
+.meal-item .article {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -141,14 +146,6 @@ h1 {
   color: #46443c;
 }
 
-.cart-final-total {
-  display: flex;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #cc3e12;
-}
-
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -210,7 +207,6 @@ h1 {
   display: flex;
   justify-content: flex-start;
   gap: 1rem;
-  margin-top: 1rem;
 }
 
 .button {
@@ -219,37 +215,6 @@ h1 {
   background-color: #ffc404;
   border: 1px solid #ffc404;
   color: #1f1a09;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-}
-
-.button-clear {
-  font: inherit;
-  cursor: pointer;
-  background-color: #9b0d0d;
-  border: none;
-  color: whitesmoke;
-  padding: 0.5rem 1.5rem;
-  border-radius: 4px;
-}
-
-.button-history {
-  font: inherit;
-  cursor: pointer;
-  background-color: #ecd68b;
-  border: none;
-  color: #1f1a09;
-  padding: 0.5rem 1.5rem;
-  margin-left: 10px;
-  border-radius: 4px;
-}
-
-.button-close {
-  font: inherit;
-  cursor: pointer;
-  background-color: #493f1f;
-  border: none;
-  color: whitesmoke;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
 }
@@ -268,18 +233,19 @@ h1 {
   border: none;
   color: #ffc404;
 }
+.text-modal-button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #1f1a09;
+}
 
 .text-button:hover,
 .text-button:active {
   color: #ffab04;
-}
-
-.success-message {
-  color: #11bb11;
-}
-
-.error-message {
-  color: #bb1111;
 }
 
 .modal {
@@ -295,6 +261,19 @@ h1 {
 
 .modal::backdrop {
   background-color: rgba(0, 0, 0, 0.55);
+}
+.error {
+  border-color: red !important;
+}
+.error-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 70vh;
+}
+.error-container {
+  background-color: #1d1a16;
 }
 
 @keyframes fade-slide-up {
