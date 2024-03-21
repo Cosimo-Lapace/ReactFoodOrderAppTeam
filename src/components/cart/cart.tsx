@@ -1,4 +1,3 @@
-import { createPortal } from "react-dom";
 import ModalActions from "../modal/modal-actions/modal-actions";
 import styles from "./cart.module.css";
 import { useContext } from "react";
@@ -11,14 +10,7 @@ function Cart() {
   const navigate = useNavigate();
   return (
     <section className={styles["cart"]}>
-      
-      {/*Temporary solution for aligning the title */}
-      {document.getElementById("modal-title") &&
-        createPortal(
           <h2>Your Cart</h2>,
-          document.getElementById("modal-title")!
-        )}
-      
       <ul>
         {items.map((item) => (
           <CartItem meal={item} />

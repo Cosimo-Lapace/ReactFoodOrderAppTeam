@@ -27,7 +27,6 @@ const Modal = forwardRef<ModalRef, React.PropsWithChildren>(function Modal(
   return createPortal(
     <dialog className="modal" ref={dialog}>
       <div className="modal-header">
-        <div id="modal-title"></div>
         <button type="button" onClick={close}>
           X
         </button>
