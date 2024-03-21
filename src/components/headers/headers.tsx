@@ -1,8 +1,8 @@
 import "./headers.css";
 import logo from "/logo.jpg";
 import Modal from "../modal/modal";
-import Cart from "../cart/cart";
 import { useRef } from "react";
+import ModalSection from "../modalSection/modal-section";
 
 export interface ModalRef {
   open: () => void;
@@ -28,7 +28,7 @@ export default function Headers() {
         </button>
       </div>
       <Modal ref={dialog}>
-        <Cart />
+        <ModalSection />
       </Modal>
     </header>
   );
