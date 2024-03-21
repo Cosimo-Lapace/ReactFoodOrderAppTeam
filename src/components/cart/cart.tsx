@@ -28,7 +28,7 @@ function Cart() {
             (accumulator, currentItem) => accumulator + +currentItem.meal.price*currentItem.quantity,
             0
           )
-          .toString()}
+          .toFixed(2)}
         €
       </div>
 
