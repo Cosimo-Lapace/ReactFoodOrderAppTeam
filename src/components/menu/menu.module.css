@@ -21,6 +21,8 @@
 }
 
 .search-container {
+  margin: 0 auto;
+  width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,4 +31,13 @@
   background-color: #312c1d;
   padding: 0.5rem;
   gap: 0.5rem;
+}
+
+.search-container input {
+  text-align: center;
+  font-size: large;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: #ffc404;
 }
