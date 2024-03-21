@@ -1,21 +1,20 @@
 import "./headers.css";
 import logo from "/logo.jpg";
 import Modal from "../modal/modal";
-import { useRef } from "react";
-import ModalSection from "../modalSection/modal-section";
-import Cart from "../cart/cart";
-
+import { useContext, useRef } from "react";
+import { Outlet } from "react-router-dom";
+import { CartContext } from "../../store/cart-context";
 export interface ModalRef {
   open: () => void;
 }
 
 export default function Headers() {
-  
   const dialog = useRef<ModalRef>(null);
+  const { items } = useContext(CartContext);
   function openModal() {
     dialog.current?.open();
   }
-  
+
   return (
     <header id="main-header">
       <div id="title">
@@ -25,11 +24,11 @@ export default function Headers() {
       <div>
         <button type="button">Orders History</button>
         <button type="button" onClick={openModal}>
-          Cart(0)
+          Cart{"(" + items.length + ")"}
         </button>
       </div>
       <Modal ref={dialog}>
-        <Cart />
+        <Outlet />
       </Modal>
     </header>
   );

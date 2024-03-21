@@ -82,8 +82,6 @@ export default function CartContextProvider({
     shoppingCartReducer,
     { items: [] }
     );
-
-    console.log(shoppingCartState);
     
       function handleAddItemToCart(productId: string) {
         shoppingCartDispatch({
