@@ -9,10 +9,12 @@ export interface ModalRef {
 }
 
 export default function Headers() {
+  
   const dialog = useRef<ModalRef>(null);
   function openModal() {
     dialog.current?.open();
-   }
+  }
+  
   return (
     <header id="main-header">
       <div id="title">

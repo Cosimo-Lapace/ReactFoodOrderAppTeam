@@ -11,6 +11,7 @@ function ModalActions({ onClose, onCloseLabel, onConfirm, onConfirmLabel }: Prop
 
   return (
     <div className="modal-actions">
+      {/*Two aligned buttons for the modal, will be displayed only if their related props exist*/ }
       {onCloseLabel && <button onClick={onClose} type="button">{onCloseLabel}</button>}
       {onConfirmLabel && <button onClick={onConfirm} type="button">{onConfirmLabel}</button>}
     </div>

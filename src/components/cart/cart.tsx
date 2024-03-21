@@ -1,10 +1,16 @@
+import { createPortal } from "react-dom";
 import ModalActions from "../modal/modal-actions/modal-actions";
 import styles from "./cart.module.css";
 
 function Cart() {
   return (
     <section className={styles["cart"]}>
-      <h2>Your Cart</h2>
+      {/*Temporary solution for aligning the title */ }
+      {document.getElementById("modal-title") &&
+        createPortal(
+          <h2>Your Cart</h2>,
+          document.getElementById("modal-title")!
+        )}
       <ul>
         <li className={styles["cart-item"]}>
           <p>Pizza</p>
@@ -15,7 +21,7 @@ function Cart() {
       </ul>
       <div className={styles["cart-total"]}>55€</div>
       <ModalActions
-        onCloseLabel={"Close"}
+        onCloseLabel={null}
         onClose={() => {}}
         onConfirmLabel={"Go To Checkout"}
         onConfirm={() => {}}

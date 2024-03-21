@@ -23,6 +23,7 @@ interface CartState {
 }
 
 function shoppingCartReducer(state: CartState, action: CartAction) {
+  //Add to the cart case; if the item does not already exists, the item is added to the cart; otherwise its quantity it's increased
     if (action.type === "ADD_ITEM") {
         const updatedItems = [...state.items];
 
@@ -47,6 +48,7 @@ function shoppingCartReducer(state: CartState, action: CartAction) {
             items: updatedItems,
         };
     }
+  //Update item in the cart case; if the item quantity reaches <=0, the item is deleted from the cart
     else if ((action.type === "UPDATE_ITEM")) {
         const updatedItems = [...state.items];
         const updatedItemIndex = updatedItems.findIndex(
