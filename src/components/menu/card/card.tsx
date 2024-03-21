@@ -19,7 +19,7 @@ const Card: React.FC<Meals> = ({ id, image, name, price, description }) => {
          <p className={classes["meal-item-description"]}>{description}</p>
      
         <div className={classes["meal-item-actions"]}>
-        <Button onClick={() => {addItemToCart(id)}} children="Add to cart" />
+        <Button onClick={() => {addItemToCart({ id, image, name, price, description })}} children="Add to cart" />
 
             {/* fare condizionale per mostrare bottone rimozione elemento */}
             {/* <Button children="X" /> */}

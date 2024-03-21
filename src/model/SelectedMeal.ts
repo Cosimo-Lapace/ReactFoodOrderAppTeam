@@ -1,8 +1,10 @@
+import { Meals } from "./Meals";
+
 export class SelectedMeal {
-  id: string;
+  meal: Meals;
   quantity: number;
-  constructor(id: string, quantity: number) {
-    this.id = id;
+  constructor( meal:Meals, quantity: number) {
+    this.meal = meal;
     this.quantity = quantity;
   }
 }

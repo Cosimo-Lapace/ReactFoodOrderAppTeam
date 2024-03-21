@@ -4,20 +4,26 @@ import styles from "./cart-item.module.css";
 import { CartContext } from "../../../store/cart-context";
 
 interface Props {
-  meal: SelectedMeal;
+  selectedMeal: SelectedMeal;
 }
 
-function CartItem({ meal }: Props) {
+function CartItem({ selectedMeal }: Props) {
   const { updateItemQuantity } = useContext(CartContext);
   return (
     <li className={styles["cart-item"]}>
-      <p>{meal.id}</p>
+      <p>{selectedMeal.meal.name}</p>
       <div className={styles["cart-item-actions"]}>
-        <button onClick={() => updateItemQuantity(meal.id, -1)} type="button">
+        <button
+          onClick={() => updateItemQuantity(selectedMeal.meal, -1)}
+          type="button"
+        >
           -
         </button>
-        {meal.quantity}
-        <button onClick={() => updateItemQuantity(meal.id, 1)} type="button">
+        {selectedMeal.quantity}
+        <button
+          onClick={() => updateItemQuantity(selectedMeal.meal, 1)}
+          type="button"
+        >
           +
         </button>
       </div>

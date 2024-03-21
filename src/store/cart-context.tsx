@@ -1,10 +1,11 @@
 import { createContext, useReducer } from "react";
 import { SelectedMeal } from "../model/SelectedMeal";
+import { Meals } from "../model/Meals";
 
 interface CartContextType {
   items: SelectedMeal[];
-  addItemToCart: (productId: string) => void;
-  updateItemQuantity: (productId: string, amount: number) => void;
+  addItemToCart: (product: Meals) => void;
+  updateItemQuantity: (product: Meals, amount: number) => void;
 }
 
 export const CartContext = createContext<CartContextType>({
@@ -28,7 +29,7 @@ function shoppingCartReducer(state: CartState, action: CartAction) {
         const updatedItems = [...state.items];
 
         const existingCartItemIndex = updatedItems.findIndex(
-            (cartItem) => cartItem.id === action.payload.id
+            (cartItem) => cartItem.meal.id === action.payload.meal.id
         );
         const existingCartItem = updatedItems[existingCartItemIndex];
 
@@ -40,7 +41,7 @@ function shoppingCartReducer(state: CartState, action: CartAction) {
             updatedItems[existingCartItemIndex] = updatedItem;
         } else {
             updatedItems.push(
-                {id:action.payload.id, quantity:1}
+                {meal:action.payload.meal, quantity:1}
             );
         }
 
@@ -52,7 +53,7 @@ function shoppingCartReducer(state: CartState, action: CartAction) {
     else if ((action.type === "UPDATE_ITEM")) {
         const updatedItems = [...state.items];
         const updatedItemIndex = updatedItems.findIndex(
-            (item) => item.id === action.payload.id
+            (item) => item.meal.id === action.payload.meal.id
         );
 
         const updatedItem = {
@@ -83,17 +84,17 @@ export default function CartContextProvider({
     { items: [] }
     );
     
-      function handleAddItemToCart(productId: string) {
+      function handleAddItemToCart(product:Meals) {
         shoppingCartDispatch({
           type: "ADD_ITEM",
-          payload: { id: productId, quantity: 1 },
+          payload: { meal: product, quantity: 1 },
         });
       }
 
-      function handleUpdateCartItemQuantity(productId:string, amount:number) {
+      function handleUpdateCartItemQuantity(product:Meals, amount:number) {
         shoppingCartDispatch({
           type: "UPDATE_ITEM",
-          payload: { id: productId, quantity: amount },
+          payload: { meal: product, quantity: amount },
         });
       }
 
