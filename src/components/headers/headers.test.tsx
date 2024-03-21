@@ -9,6 +9,7 @@ jest.mock("react-dom", () => ({
   createPortal: (node: React.ReactNode) => node,
 }));
 
+//Mocks dialog functions
 beforeAll(() => {
   HTMLDialogElement.prototype.show = jest.fn();
   HTMLDialogElement.prototype.showModal = jest.fn();
@@ -24,6 +25,6 @@ test("This test verifies if the modal is functioning properly", () => {
   fireEvent.click(cartButton);
 
   //ASSERT
-  const dialog = screen.getByRole("dialog", { hidden: true });
-  expect(dialog).toBeInTheDocument();
+  //Verify that the showModal function is called
+  expect(HTMLDialogElement.prototype.showModal).toHaveBeenCalled();
 });
