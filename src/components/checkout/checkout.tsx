@@ -5,7 +5,6 @@ function Checkout() {
     
     return (
       <div>
-        Questo è il checkout :D
         <UserGuardContextProvider>
           <CheckoutForm />
         </UserGuardContextProvider>
