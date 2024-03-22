@@ -2,7 +2,7 @@ import React, { useContext, useRef } from "react";
 import { Meals } from "../../../model/Meals.ts";
 import { url } from "../../../http/https.ts";
 import Button from "../../../utilities/button/button.tsx";
-import classes from "./card.module.css";
+import  "./card.css";
 import { CartContext } from "../../../store/cart-context.tsx";
 import useClickAnimation from "../../../hooks/useClickAnimation.tsx";
 
@@ -11,17 +11,17 @@ const Card: React.FC<Meals> = ({ id, image, name, price, description }) => {
   const { addItemToCart } = useContext(CartContext);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const  triggerAnimation  = useClickAnimation(buttonRef, "animatedButton")
-  return <div className={classes["meal-item"]}>
-    <div className={classes["article"]}>
+  return <div className="meal-item">
+    <div className="article">
         <img src={`${url}${image}`} alt={name}/>
         <h3>{name}</h3>
             <div>
-                <p className={classes["meal-item-price"]}>€ {price}</p>
+                <p className="meal-item-price">€ {price}</p>
             </div>
       
-         <p className={classes["meal-item-description"]}>{description}</p>
+         <p className="meal-item-description">{description}</p>
      
-      <div className={classes["meal-item-actions"]}>
+      <div className="meal-item-actions">
         <Button ref={buttonRef} onClick={() => { addItemToCart({ id, image, name, price, description }); triggerAnimation()}} children="Add to cart" />
 
             {/* fare condizionale per mostrare bottone rimozione elemento */}

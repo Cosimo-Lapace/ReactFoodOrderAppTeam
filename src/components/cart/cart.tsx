@@ -1,5 +1,5 @@
 import ModalActions from "../modal/modal-actions/modal-actions";
-import styles from "./cart.module.css";
+import "./cart.css";
 import { useContext } from "react";
 import { CartContext } from "../../store/cart-context";
 import CartItem from "./cart item/cart-item";
@@ -9,7 +9,7 @@ function Cart() {
   const { items } = useContext(CartContext);
   const navigate = useNavigate();
   return (
-    <section className={styles["cart"]}>
+    <section className="cart">
       <h2>Your Cart</h2>
       {items.length > 0 ? (
         <ul>
@@ -21,7 +21,7 @@ function Cart() {
         <p>Your cart is still empty :(</p>
       )}
 
-      <div className={styles["cart-total"]}>
+      <div className="cart-total">
         {/*Total price calculation */ }
         {items
           .reduce(

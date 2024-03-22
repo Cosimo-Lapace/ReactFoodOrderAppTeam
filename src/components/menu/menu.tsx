@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import Card from "../../components/menu/card/card.tsx";
 import { Meals } from "../../model/Meals.ts";
-import classes from "./menu.module.css";
+import   "./menu.css";
 import Spinner from "../../utilities/spinner/spinner.tsx";
 import Button from "../../utilities/button/button.tsx";
 import Input from "../../utilities/input/input";
@@ -14,7 +14,7 @@ const Menu: React.FC = () => {
 
   return (
     <>
-      <div className={classes["search-container"]}>
+      <div className="search-container">
         <Input
           name={"search"}
           type={"text"}
@@ -26,13 +26,13 @@ const Menu: React.FC = () => {
       {loading ? <Spinner typeContainer="xl" /> : null}
       {/* error container if the data is not loading and there is an error with retry button */}
       {error ? (
-        <div className={classes["error-container"]}>
+        <div className="error-container">
           <h5>{error}</h5>
           <Button children="Retry" onClick={() => window.location.reload()} />
         </div>
       ) : null}
       {!error && !loading ? (
-        <div id={classes.meals}>
+        <div id="meals">
           {displayMeals.map((meal: Meals) => (
             // we pass the list of the meals through a mapped array
             <div key={meal.id}>

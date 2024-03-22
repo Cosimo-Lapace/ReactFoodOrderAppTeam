@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SelectedMeal } from "../../../model/SelectedMeal";
-import styles from "./cart-item.module.css";
+import  "./cart-item.css";
 import { CartContext } from "../../../store/cart-context";
 
 interface Props {
@@ -10,9 +10,9 @@ interface Props {
 function CartItem({ selectedMeal }: Props) {
   const { updateItemQuantity } = useContext(CartContext);
   return (
-    <li className={styles["cart-item"]}>
+    <li className="cart-item">
       <p>{selectedMeal.meal.name}</p>
-      <div className={styles["cart-item-actions"]}>
+      <div className="cart-item-actions">
         <button
           onClick={() => updateItemQuantity(selectedMeal.meal, -1)}
           type="button"
