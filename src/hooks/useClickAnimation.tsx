@@ -1,6 +1,9 @@
 import { useState } from "react";
 
-function useClickAnimation(ref: React.RefObject<HTMLButtonElement> | null, animationClass:string) {
+function useClickAnimation(
+  ref: React.RefObject<HTMLButtonElement> | null,
+  animationClass: string
+) {
   const [animating, setAnimating] = useState<boolean>(false);
   let prevClassName = "";
   async function triggerAnimation() {
@@ -15,7 +18,7 @@ function useClickAnimation(ref: React.RefObject<HTMLButtonElement> | null, anima
         }
         setAnimating(false);
         clearTimeout(timeout);
-      }, 1000);
+      }, 500);
     }
   }
 

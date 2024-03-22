@@ -1,21 +1,19 @@
 import React, { forwardRef } from "react";
 import classes from "./button.module.css";
+import "./button.css"
 
-interface Props extends React.PropsWithChildren{
-  onClick: () => void
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  onClick: () => void;
 }
-//we give the children prop to the button
-const Button = forwardRef(function Button({onClick,
-  children,
-  ...rest
-}: Props, ref) {
-  return (
-    <>
-      {/* we give the children prop to the button */}
-      <button ref={ref} {...rest} className={classes.button} onClick={onClick}>
+
+const Button = forwardRef<HTMLButtonElement, Props>(
+  ({ onClick, children, ...rest }, ref) => {
+    return (
+      <button {...rest} className={classes.button} onClick={onClick} ref={ref}>
         {children}
       </button>
-    </>
-  );
-});
+    );
+  }
+);
+
 export default Button;

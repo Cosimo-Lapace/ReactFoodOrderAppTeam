@@ -1,0 +1,8 @@
+.animatedButton,
+.animatedButton:hover,
+.animatedButton:active {
+  background-color: green;
+  color: white;
+  border-color: white;
+  transform: scale(1.03);
+}
