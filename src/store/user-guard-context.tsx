@@ -1,11 +1,12 @@
 import React, { createContext } from "react";
 import { Customer } from "../model/OrderData";
+import { useNavigate } from "react-router";
 
 interface UserGuardContextType {
   userData: Customer;
   setUserData: React.Dispatch<React.SetStateAction<Customer>>;
   isValid: boolean;
-  handleSubmit: () => void;
+  handleSubmit: () => boolean;
   handleReset: () => void;
   setIsValid: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -17,7 +18,9 @@ export const UserGuardContext = createContext<UserGuardContextType>({
     city: "",
     postalCode: "",
   },
-  handleSubmit: () => {},
+  handleSubmit: () => {
+    return false;
+  },
   handleReset: () => {},
   setUserData: () => {},
   isValid: true,
@@ -34,6 +37,7 @@ export default function UserGuardContextProvider({
     postalCode: "",
   });
   const [isValid, setIsValid] = React.useState<boolean>(true);
+  const navigate = useNavigate();
   function handleSubmit() {
     if (
       userData.name.length < 4 ||
@@ -43,9 +47,11 @@ export default function UserGuardContextProvider({
       !userData.postalCode.match(/.*\d+.*/)
     ) {
       setIsValid(false);
-      return;
+      return false;
     } else {
       setIsValid(true);
+      navigate("/conclusion");
+      return true;
     }
   }
   function handleReset() {
