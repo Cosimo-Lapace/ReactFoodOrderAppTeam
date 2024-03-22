@@ -7,7 +7,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>(
-  ({ onClick, children, ...rest }, ref) => {
+  ({ onClick, children, ...rest }, ref: React.Ref<HTMLButtonElement>) => {
     return (
       <button {...rest} className={classes.button} onClick={onClick} ref={ref}>
         {children}
