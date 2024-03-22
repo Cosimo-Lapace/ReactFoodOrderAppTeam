@@ -6,7 +6,7 @@ import CartItem from "./cart item/cart-item";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
-  const { items } = useContext(CartContext);
+  const { items, emptyCart } = useContext(CartContext);
   const navigate = useNavigate();
   return (
     <section className="cart">
@@ -31,8 +31,8 @@ function Cart() {
           </div>
 
           <ModalActions
-            onCloseLabel={null}
-            onClose={() => {}}
+            onCloseLabel={"EmptyCart"}
+            onClose={emptyCart}
             onConfirmLabel={"Go To Checkout"}
             onConfirm={() => navigate("/checkout")}
           />

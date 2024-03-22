@@ -8,14 +8,14 @@ import { CartContext } from "../../store/cart-context";
 const CheckoutForm: React.FC = () => {
   const { userData, setUserData, isValid, handleSubmit, handleReset } =
     useContext(UserGuardContext);
-  const {placeOrder, items } = useContext(CartContext);
+  const {placeOrder, items, emptyCart } = useContext(CartContext);
 
   function handleSubmited(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
    const isValid = handleSubmit();
    if(!isValid) return;
     placeOrder({id:Math.random().toString(),items:items, customer:userData});
-   
+    emptyCart();
   }
 
   function handleResetForm() {
