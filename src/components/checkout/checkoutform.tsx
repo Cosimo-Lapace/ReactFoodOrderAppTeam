@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import Input from "../../utilities/input/input";
 import Button from "../../utilities/button/button";
-import classes from "../../utilities/input/input.module.css";
+import  "../../utilities/input/input.css";
 import { UserGuardContext } from "../../store/user-guard-context";
 import { CartContext } from "../../store/cart-context";
 
@@ -30,7 +30,7 @@ const CheckoutForm: React.FC = () => {
       {!isValid && <p>Please fill all fields</p>}
       <form className="control" onSubmit={handleSubmited}>
         <h2>Total: €</h2>
-        <div className={classes["control"]}>
+        <div className="control">
           <label htmlFor="name">Name</label>
           <Input
             name="name"
@@ -41,7 +41,7 @@ const CheckoutForm: React.FC = () => {
           />
         </div>
 
-        <div className={classes["control"]}>
+        <div className="control">
           <label htmlFor="email">Email</label>
           <Input
             name="email"
@@ -52,7 +52,7 @@ const CheckoutForm: React.FC = () => {
           />
         </div>
 
-        <div className={classes["control"]}>
+        <div className="control">
           <label htmlFor="street">Street</label>
           <Input
             name="street"
@@ -63,7 +63,7 @@ const CheckoutForm: React.FC = () => {
           />
         </div>
 
-        <div className={classes["control-row"]}>
+        <div className="control-row">
           <label htmlFor="city">City</label>
           <Input
             name="city"
