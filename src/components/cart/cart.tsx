@@ -12,32 +12,34 @@ function Cart() {
     <section className="cart">
       <h2>Your Cart</h2>
       {items.length > 0 ? (
-        <ul>
-          {items.map((item) => (
-            <CartItem selectedMeal={item} key={item.meal.id} />
-          ))}
-        </ul>
+        <>
+          <ul>
+            {items.map((item) => (
+              <CartItem selectedMeal={item} key={item.meal.id} />
+            ))}
+          </ul>
+          <div className="cart-total">
+            {/*Total price calculation*/}
+            {items
+              .reduce(
+                (accumulator, currentItem) =>
+                  accumulator + +currentItem.meal.price * currentItem.quantity,
+                0
+              )
+              .toFixed(2)}
+            €
+          </div>
+
+          <ModalActions
+            onCloseLabel={null}
+            onClose={() => {}}
+            onConfirmLabel={"Go To Checkout"}
+            onConfirm={() => navigate("/checkout")}
+          />
+        </>
       ) : (
         <p>Your cart is still empty :(</p>
       )}
-
-      <div className="cart-total">
-        {/*Total price calculation */ }
-        {items
-          .reduce(
-            (accumulator, currentItem) => accumulator + +currentItem.meal.price*currentItem.quantity,
-            0
-          )
-          .toFixed(2)}
-        €
-      </div>
-
-      <ModalActions
-        onCloseLabel={null}
-        onClose={() => {}}
-        onConfirmLabel={"Go To Checkout"}
-        onConfirm={() => navigate("/checkout")}
-      />
     </section>
   );
 }
