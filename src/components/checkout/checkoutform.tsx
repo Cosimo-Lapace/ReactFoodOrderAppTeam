@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { useNavigate } from "react-router";
 import Input from "../../utilities/input/input";
 import Button from "../../utilities/button/button";
 import classes from "../../utilities/input/input.module.css";
@@ -9,16 +10,21 @@ const CheckoutForm: React.FC = () => {
   const { userData, setUserData, isValid, handleSubmit, handleReset } =
     useContext(UserGuardContext);
   const {placeOrder, items} = useContext(CartContext);
+   const navigate = useNavigate();
 
   function handleSubmited(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     handleSubmit();
     placeOrder({id:Math.random().toString(),items:items, customer:userData});
+    navigate("/conclusion");
   }
 
   function handleResetForm() {
     handleReset();
   }
+
+ 
+
 
   return (
     <>

@@ -45,7 +45,6 @@ export default function UserGuardContextProvider({
       setIsValid(false);
       return;
     } else {
-      console.log(userData);
       setIsValid(true);
     }
   }
