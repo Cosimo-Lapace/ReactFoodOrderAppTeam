@@ -1,5 +1,4 @@
 import React, { forwardRef } from "react";
-import classes from "./button.module.css";
 import "./button.css"
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,7 +8,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const Button = forwardRef<HTMLButtonElement, Props>(
   ({ onClick, children, ...rest }, ref: React.Ref<HTMLButtonElement>) => {
     return (
-      <button {...rest} className={classes.button} onClick={onClick} ref={ref}>
+      <button {...rest} className="button" onClick={onClick} ref={ref}>
         {children}
       </button>
     );

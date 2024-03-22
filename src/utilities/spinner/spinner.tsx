@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./spinner.module.css";
+import  "./spinner.css";
 
 //we define our spinner props
 interface Props {
@@ -11,10 +11,10 @@ const Spinner: React.FC <Props> = ({typeContainer}) => {
   //we give the className based on the typeContainer props passed
       className={
         typeContainer === "sm"
-          ? classes.spinnerContainerSm
-          : classes.spinnerContainerXl
+          ? "spinnerContainerSm"
+          : "spinnerContainerXl"
       }>
-    <span className={classes.loader}></span>
+    <span className="loader"></span>
   </div>;
 };
 export default Spinner;

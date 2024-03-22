@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./input.module.css";
+import "./input.css";
 import { Customer } from "../../model/OrderData";
 
 //we assign enums to our inputs in order to avoid typos (baked enums)
@@ -42,7 +42,7 @@ const Input: React.FC<InputProps> = ({
       <input
         value={value}
         onChange={changeValue}
-        className={classes.control}
+        className="control"
         type={type}
         name={name}
         placeholder={placeholder}

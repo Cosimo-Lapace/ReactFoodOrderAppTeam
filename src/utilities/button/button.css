@@ -1,3 +1,66 @@
+.button {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ffc404;
+  border: 1px solid #ffc404;
+  color: #1f1a09;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s, transform 0.1s ease-in;
+}
+
+.button-clear {
+  font: inherit;
+  cursor: pointer;
+  background-color: #9b0d0d;
+  border: none;
+  color: whitesmoke;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+.button-history {
+  font: inherit;
+  cursor: pointer;
+  background-color: #ecd68b;
+  border: none;
+  color: #1f1a09;
+  padding: 0.5rem 1.5rem;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+.button-close {
+  font: inherit;
+  cursor: pointer;
+  background-color: #493f1f;
+  border: none;
+  color: whitesmoke;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px;
+}
+
+.button:hover,
+.button:active {
+  background-color: #ffab04;
+  border-color: #ffab04;
+  color: #1f1a09;
+}
+
+.text-button {
+  font: inherit;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #ffc404;
+}
+
+.text-button:hover,
+.text-button:active {
+  color: #ffab04;
+}
+
+
 .animatedButton,
 .animatedButton:hover,
 .animatedButton:active {
