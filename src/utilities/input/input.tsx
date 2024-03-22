@@ -2,16 +2,10 @@ import React from "react";
 import "./input.css";
 import { Customer } from "../../model/OrderData";
 
-//we assign enums to our inputs in order to avoid typos (baked enums)
-enum InputType {
-  Text = "text",
-  email = "email",
-  number = "number",
-}
+
 
 //we define our input props
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  type: InputType;
   placeholder?: string;
   setUserData: React.Dispatch<React.SetStateAction<Customer>>;
   name: keyof Customer;
@@ -23,7 +17,6 @@ const Input: React.FC<InputProps> = ({
   value,
   setUserData,
   name,
-  type,
   placeholder,
   ...rest
 }) => {
@@ -43,7 +36,7 @@ const Input: React.FC<InputProps> = ({
         value={value}
         onChange={changeValue}
         className="control"
-        type={type}
+      /*   type={type} */
         name={name}
         placeholder={placeholder}
         {...rest}

@@ -2,7 +2,7 @@ import React, { forwardRef } from "react";
 import "./button.css"
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const Button = forwardRef<HTMLButtonElement, Props>(
