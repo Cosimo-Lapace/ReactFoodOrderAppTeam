@@ -6,6 +6,7 @@ import './index.css'
 import Cart from "./components/cart/cart.tsx";
 import Checkout from "./components/checkout/checkout.tsx";
 import Conclusion from "./components/conclusion/conclusion.tsx";
+import NotFound from "./utilities/notfound/notfound.tsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
         element: <Conclusion />,
       },
     ],
+    errorElement: <NotFound />,
   },
 ]);
 
