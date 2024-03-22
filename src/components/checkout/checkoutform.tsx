@@ -2,57 +2,49 @@ import React from "react";
 import Input from "../../utilities/input/input";
 import Button from "../../utilities/button/button";
 import classes from "../../utilities/input/input.module.css";
+import CheckoutValidation from "./checkout-validation/checkoutValidation";
 
-const CheckoutForm: React.FC = () => {
+const CheckoutForm: React.FC = ({ 
+  orderData,
+  errors,
+  handleChange,
+  handleReset,
+ }) => {
   return <form className="control">
     <h2>Total: €</h2>
-    <div className={classes["control-row"]}>
-        <div>
+    <div className={classes["control"]}>
             <label htmlFor="name">Name</label>
-        </div>
         <Input
           name={"name"}
           type={"text"}
           placeholder={"Enter your full name"}
-          value={""}
-          onChange={() => {}}
+          value={orderData.order.customer.name}
+          onChange={handleChange}
           required
         />
     </div>
 
-    <div className={classes["control-row"]}>
+    <div className={classes["control"]}>
         <label htmlFor="email">Email</label>
         <Input
           name={"email"}
           type={"email"}
           placeholder={"Enter your email"}
-          value={""}
-          onChange={() => {}}
+          value={orderData.order.customer.email}
+          onChange={handleChange}
           required
         />
     </div>
 
 
-      <div className={classes["control-row"]}>
-        <label htmlFor="phone">Phone</label>
+      <div className={classes["control"]}>
+        <label htmlFor="street">Street</label>
         <Input
-          name={"phone"}
-          type={"text"}
-          placeholder={"Enter your phone number"}
-          value={""}
-          onChange={() => {}}
-          required
-        />
-    </div>
-
-    <div className={classes["control-row"]}>
-        <label htmlFor="address">Address</label>
-        <Input
-          name={"address"}
+          name={"street"}
           type={"text"}
           placeholder={"Enter your address"}
-          value={""}
-          onChange={() => {}}
+          value={orderData.order.customer.street}
+          onChange={handleChange}
           required
         />
     </div>
@@ -63,27 +55,33 @@ const CheckoutForm: React.FC = () => {
           name={"city"}
           type={"text"}
           placeholder={"Enter your city"}
-          value={""}
-          onChange={() => {}}
+          value={orderData.order.customer.city}
+          onChange={handleChange}
           required
         />
-    </div>
-
-    <div className={classes["control-row"]}>
-        <label htmlFor="zip">Zip Code</label>
+   
+        <label htmlFor="zip">Postal Code</label>
         <Input
-          name={"zip"}
+          name={"postalCode"}
           type={"number"}
           placeholder={"Enter your zip code"}
-          value={""}
-          onChange={() => {}}
+          value={orderData.order.customer.postalCode}
+          onChange={handleChange}
           required
         />
     </div>
 
+    <CheckoutValidation />
+
+    {Object.keys(errors).map((key) => (
+        <p key={key} style={{ color: "red" }}>
+          {errors[key]}
+        </p>
+      ))}
+
     <div className={classes["control-row"]}>
-        <Button>Submit Order</Button>
-        <Button>Clear form</Button>
+        <Button onClick={() => console.log(orderData)}>Submit Order</Button>
+        <Button onClick={handleReset}>Clear form</Button>
     </div>
   
   </form>;
