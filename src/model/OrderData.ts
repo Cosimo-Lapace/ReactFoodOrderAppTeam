@@ -1,3 +1,5 @@
+import { SelectedMeal } from "./SelectedMeal";
+
 export class Customer {
   name: string;
   email: string;
@@ -17,5 +19,16 @@ export class Customer {
     this.street = street;
     this.postalCode = postalCode;
     this.city = city;
+  }
+}
+
+export class Order {
+  id: string;
+  customer: Customer;
+  items: SelectedMeal[];
+  constructor(id: string, customer: Customer, items: SelectedMeal[]) {
+    this.id = id;
+    this.customer = customer;
+    this.items = items;
   }
 }
