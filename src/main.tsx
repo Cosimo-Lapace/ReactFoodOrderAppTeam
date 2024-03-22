@@ -5,6 +5,7 @@ import App from './App.tsx'
 import './index.css'
 import Cart from "./components/cart/cart.tsx";
 import Checkout from "./components/checkout/checkout.tsx";
+import Conclusion from "./components/conclusion/conclusion.tsx";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "checkout",
         element: <Checkout />,
+      },
+      {
+        path: "conclusion",
+        element: <Conclusion />,
       },
     ],
   },

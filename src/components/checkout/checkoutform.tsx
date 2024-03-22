@@ -3,14 +3,17 @@ import Input from "../../utilities/input/input";
 import Button from "../../utilities/button/button";
 import classes from "../../utilities/input/input.module.css";
 import { UserGuardContext } from "../../store/user-guard-context";
+import { CartContext } from "../../store/cart-context";
 
 const CheckoutForm: React.FC = () => {
   const { userData, setUserData, isValid, handleSubmit, handleReset } =
     useContext(UserGuardContext);
+  const {placeOrder, items} = useContext(CartContext);
 
   function handleSubmited(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     handleSubmit();
+    placeOrder({id:Math.random().toString(),items:items, customer:userData});
   }
 
   function handleResetForm() {

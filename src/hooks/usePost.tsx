@@ -7,16 +7,14 @@ const usePost = (
   typeFn: (uri: string, order: Order) => Promise<[]>,
   //we pass a string
   uri: string,
-  //we pass a body
-  order: Order,
   //we pass a string as default error message
   errorMessage = "An error has occurred"
 ) => {
-  //We create 3 states for data, error and loading
+  //We create 2 states for the response outcome and the loading state
   const [outcome, setOutcome] = React.useState<Outcome>();
   const [loading, setLoading] = React.useState<boolean>(false);
 
-  async function post() {
+  async function post(order: Order) {
     setLoading(true);
     try {
       await typeFn(uri, order);

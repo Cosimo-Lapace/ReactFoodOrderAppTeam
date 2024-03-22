@@ -1,0 +1,12 @@
+.conclusion {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 3rem;
+}
+
+.conclusion h1 {
+  font-size: 2rem;
+  margin: 3rem;
+}
