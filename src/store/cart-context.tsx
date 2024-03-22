@@ -20,6 +20,7 @@ interface CartContextType {
   addItemToCart: (product: Meals) => void;
   updateItemQuantity: (product: Meals, amount: number) => void;
   placeOrder: (order: Order) => void;
+  emptyCart: () => void;
   requestState: {
     outcome: Outcome | undefined;
     loading: boolean;
@@ -30,7 +31,8 @@ export const CartContext = createContext<CartContextType>({
   items: [],
   addItemToCart: () => {},
   updateItemQuantity: () => {},
-  placeOrder: () => {},
+  placeOrder: () => { },
+  emptyCart: () => { },
   requestState: {
     outcome: {
       message: "",
@@ -86,7 +88,12 @@ function shoppingCartReducer(state: CartState, action: CartAction) {
     return {
       items: updatedItems,
     };
-  } else {
+  } else if (action.type === "EMPTY_CART") {
+    return {
+      items: [],
+    };
+  }
+  else {
     return state;
   }
 }
@@ -118,11 +125,19 @@ export default function CartContextProvider({
     });
   }
 
+  function emptyCart() {
+    shoppingCartDispatch({
+      type: "EMPTY_CART",
+      payload: { meal: new Meals("","","","",""), quantity: 1 },
+    });
+  }
+
   const ctxValue = {
     items: shoppingCartState.items,
     addItemToCart: handleAddItemToCart,
     updateItemQuantity: handleUpdateCartItemQuantity,
     placeOrder: post,
+    emptyCart:emptyCart,
     requestState: {
       outcome,
       loading,
