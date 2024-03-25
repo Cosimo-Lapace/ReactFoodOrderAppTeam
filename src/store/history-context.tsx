@@ -29,7 +29,7 @@ export default function HistoryContextProvider({ children }: React.PropsWithChil
             }
         }
         getHistory();
-    }, []);
+    }, [history]);
 
 
     return (
