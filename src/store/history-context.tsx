@@ -18,12 +18,11 @@ export default function HistoryContextProvider({ children }: React.PropsWithChil
     useEffect(() => {
         async function getHistory() {
             try {
-             const response = await fetch(`${url}`+'/orders');
+             const response = await fetch(`${url}`+'orders');
              if(!response.ok) {
                 throw new Error('Failed to get history data');
              }          
              const data = await response.json();
-             console.log(data);
              setHistory(data);
             } catch (error) {
                 console.log('Failed to get history data');
