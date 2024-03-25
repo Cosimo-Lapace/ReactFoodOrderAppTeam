@@ -6,6 +6,7 @@ import { Outlet } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../store/cart-context";
 import { HistoryContext } from "../../store/history-context";
+import ModalContextProvider from "../../store/modal-context";
 export interface ModalRef {
   open: () => void;
 }
@@ -42,9 +43,11 @@ export default function Headers() {
           Cart{"(" + items.length + ")"}
         </button>
       </div>
-      <Modal ref={dialog}>
-        <Outlet />
-      </Modal>
+      <ModalContextProvider>
+        <Modal ref={dialog}>
+          <Outlet />
+        </Modal>
+      </ModalContextProvider>
     </header>
   );
 }

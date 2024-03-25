@@ -1,26 +1,18 @@
 import "./modal.css";
-import { useRef, forwardRef, useImperativeHandle } from "react";
+import {  forwardRef, useImperativeHandle, useContext } from "react";
 import { createPortal } from "react-dom";
 import { ModalRef } from "../headers/headers";
-import { useNavigate } from "react-router";
-
+import{ ModalContext } from "../../store/modal-context";
 
 const Modal = forwardRef<ModalRef, React.PropsWithChildren>(function Modal(
   { children },
   ref
 ) {
-  const dialog = useRef<HTMLDialogElement>(null);
-  const navigate = useNavigate();
-
-  //Modal closing
-  function close() {
-    dialog.current?.close();
-  }
-
+  const {dialog,close,navigate} = useContext(ModalContext);
   //Modal opening
   useImperativeHandle(ref, () => ({
     open: () => {
-      if (dialog.current) {
+      if (dialog?.current) {
         navigate("/");
         dialog.current.showModal();
       }

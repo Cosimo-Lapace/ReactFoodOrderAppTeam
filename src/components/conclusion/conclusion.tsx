@@ -1,13 +1,20 @@
-import { useNavigate } from "react-router";
-import  "./conclusion.css";
+
+import "./conclusion.css";
 import Button from "../../utilities/button/button";
+import { useContext } from "react";
+import { ModalContext } from "../../store/modal-context";
 
 function Conclusion() {
-  const navigate = useNavigate();
+  const {  close, navigate } = useContext(ModalContext);
+  function onclose() {
+    close();
+    navigate("/");
+  }
+
   return (
     <div className="conclusion">
       <h1>Thank you for your order!</h1>
-      <Button onClick={() => navigate("/")}>Close</Button>
+      <Button onClick={onclose}>Close</Button>
     </div>
   );
 }
