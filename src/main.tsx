@@ -8,6 +8,9 @@ import Checkout from "./components/checkout/checkout.tsx";
 import Conclusion from "./components/conclusion/conclusion.tsx";
 import History from "./components/history/history.tsx";
 import NotFound from "./utilities/notfound/notfound.tsx";
+import CartContextProvider from "./store/cart-context.tsx";
+import Detail from "./components/detail/detail.tsx";
+import FilterContextProvider from "./store/filter-context.tsx";
 
 const router = createBrowserRouter([
   {
@@ -34,10 +37,19 @@ const router = createBrowserRouter([
     ],
     errorElement: <NotFound />,
   },
+  {
+    path: "/details/:id",
+    element: <Detail />,
+    errorElement: <NotFound />,
+  }
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-       <RouterProvider router={router} />
-  </React.StrictMode>,
-)
+    <CartContextProvider>
+      <FilterContextProvider>
+        <RouterProvider router={router} />
+      </FilterContextProvider>
+    </CartContextProvider>
+  </React.StrictMode>
+);
