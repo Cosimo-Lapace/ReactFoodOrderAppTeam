@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { HistoryContext } from "../../store/history-context";
 
 const History = () => {
-    //We retrieve the context from the provider
-     const { history } = useContext(HistoryContext);
-
-    return (
-         <div>
+  //We retrieve the context from the provider
+  const { history } = useContext(HistoryContext);
+  console.log(history);
+  return (
+    <div>
       <h1>Customer Data</h1>
       {history.length > 0}
       {history.map((order) => (
@@ -27,7 +27,7 @@ const History = () => {
         </div>
       ))}
     </div>
-    )
-}
+  );
+};
 
 export default History;
