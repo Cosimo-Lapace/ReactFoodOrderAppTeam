@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 const History = () => {
 
-    const { history } = useContext<any>(any);
+    /* const { history } = useContext<any>(any); */
 
     return (
         <div>

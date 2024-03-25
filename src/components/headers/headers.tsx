@@ -29,8 +29,8 @@ export default function Headers() {
         <h1>ReactFood</h1>
       </div>
       <div>
-        <button type="button" onClick={onModal("history")}>History</button>
-        <button type="button" onClick={onModal("cart")}>
+        <button type="button" onClick={() => onModal("history")}>History</button>
+        <button type="button" onClick={() => onModal("cart")}>
           Cart{"(" + items.length + ")"}
         </button>
       </div>
