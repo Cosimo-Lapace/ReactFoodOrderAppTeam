@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../store/cart-context";
 import { HistoryContext } from "../../store/history-context";
 import ModalContextProvider from "../../store/modal-context";
+import Navbar from "../navbar/navbar";
 export interface ModalRef {
   open: () => void;
 }
@@ -35,14 +36,7 @@ export default function Headers() {
         <img src={logo} alt="logo" />
         <h1>ReactFood</h1>
       </div>
-      <div>
-        <button type="button" onClick={() => onModal("history")}>
-          History
-        </button>
-        <button type="button" onClick={() => onModal("cart")}>
-          Cart{"(" + items.length + ")"}
-        </button>
-      </div>
+      <Navbar onModal={onModal} items={items} />
       <ModalContextProvider>
         <Modal ref={dialog}>
           <Outlet />
