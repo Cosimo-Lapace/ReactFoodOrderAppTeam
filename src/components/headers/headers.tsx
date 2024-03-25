@@ -3,6 +3,7 @@ import logo from "/logo.jpg";
 import Modal from "../modal/modal";
 import { useContext, useRef } from "react";
 import { Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../store/cart-context";
 export interface ModalRef {
   open: () => void;
@@ -11,9 +12,15 @@ export interface ModalRef {
 export default function Headers() {
   const dialog = useRef<ModalRef>(null);
   const { items } = useContext(CartContext);
+  const navigate = useNavigate();
   function openModal() {
     dialog.current?.open();
   }
+  function onModal(path: string) {
+    openModal();
+    navigate(path);
+  }
+  
 
   return (
     <header id="main-header">
@@ -22,8 +29,8 @@ export default function Headers() {
         <h1>ReactFood</h1>
       </div>
       <div>
-        <button type="button">Orders History</button>
-        <button type="button" onClick={openModal}>
+        <button type="button" onClick={onModal("history")}>History</button>
+        <button type="button" onClick={onModal("cart")}>
           Cart{"(" + items.length + ")"}
         </button>
       </div>
