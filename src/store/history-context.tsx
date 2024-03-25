@@ -3,18 +3,21 @@ import { Order } from "../model/OrderData";
 import { useEffect, useState } from "react";
 import { url } from "../http/https";
 
+//we declare the interface with its properties
 interface HistoryContextType {
   history: Order[];
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
 
+//we create the context and pass the interface
 export const HistoryContext = createContext<HistoryContextType>({
   history: [],
   isOpen: false,
   setIsOpen: () => {},
 });
 
+//we export the provider
 export default function HistoryContextProvider({
   children,
 }: React.PropsWithChildren) {
@@ -22,6 +25,7 @@ export default function HistoryContextProvider({
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
+  //we create an effect that will get the history data and update the state when modal is open
   useEffect(() => {
     async function getHistory() {
       try {
@@ -38,7 +42,7 @@ export default function HistoryContextProvider({
     getHistory();
   }, [isOpen]);
 
-  console.log(isOpen);
+  //we return the provider that can be used in App
   return (
     <HistoryContext.Provider value={{ history, setIsOpen, isOpen }}>
       {children}

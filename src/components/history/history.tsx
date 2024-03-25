@@ -4,9 +4,10 @@ import { HistoryContext } from "../../store/history-context";
 const History = () => {
   //We retrieve the context from the provider
   const { history } = useContext(HistoryContext);
-  console.log(history);
+
   return (
     <div>
+        {/* We display the history starting from customer data */}
       <h1>Customer Data</h1>
       {history.length > 0}
       {history.map((order) => (
