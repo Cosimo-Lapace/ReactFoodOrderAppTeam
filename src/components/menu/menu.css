@@ -9,6 +9,12 @@
   gap: 1rem;
 }
 
+@media screen and (max-width: 600px) {
+  #meals {
+    justify-content: center;
+  }
+}
+
 .error-container {
   display: flex;
   justify-content: center;
