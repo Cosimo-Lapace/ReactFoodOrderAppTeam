@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
-describe("test", () => {
-  it("test", () => {
+describe("first block", () => {
+  it("first block", () => {
     cy.visit(Cypress.env("baseUrl"));
     cy.wait(2000);
     cy.get("h1").should("be.visible");
@@ -18,7 +18,10 @@ describe("test", () => {
       });
     cy.get("#main-header > :nth-child(2) > :nth-child(2)").then(($element) => {
       
-      cy.log($element.text());
+      if ($element.text().includes("1")) {
+        cy.wrap($element).click();
+      }
     });
+    cy.get('dialog').should('be.visible');
   });
 });
